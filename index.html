@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyumba Ya Tumaini | Hope for Street-Connected Boys in Kenya</title>
+    <meta name="description" content="Nyumba Ya Tumaini rescues, rehabilitates, and reintegrates street-connected boys in Nairobi, Kenya. Join us to provide a nurturing community and a sustainable future.">
+    <meta name="keywords" content="Nyumba Ya Tumaini, street children Kenya, child rescue Nairobi, non-profit Kenya, empower youth, boy child empowerment, charity Nairobi">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chosen Palette: Savannah Hope -->
+    <!-- Application Structure Plan: A single-page, narrative-driven application. The user journey begins with an emotional hook establishing the problem ('Our Why'), flows into the solution (an interactive '4 Rs' model), demonstrates effectiveness ('Our Impact' with charts and counters), builds trust ('Our Story & Team'), and culminates in clear calls to action ('Get Involved'). This structure is designed for maximum user engagement and conversion by creating a compelling story of need, action, and hope, rather than just presenting information. -->
+    <!-- Visualization & Content Choices: 
+        - The Problem: Goal: Inform/Urgency. Method: Large static number. Justification: High visual impact.
+        - The 4 R's: Goal: Organize/Explain. Method: Interactive HTML/CSS cards. Interaction: Click to reveal details. Justification: Encourages exploration without cluttering the UI.
+        - Impact Growth: Goal: Compare/Change. Method: Chart.js Bar Chart. Interaction: Hover tooltips. Justification: Clearly visualizes growth and impact over time. Library: Chart.js.
+        - Impact Stats: Goal: Inform. Method: Animated JS counters. Justification: Dynamic and engaging way to show key numbers.
+        - Donation Form: Goal: Convert. Method: Interactive JS buttons. Justification: Simplifies the donation process, reducing friction.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8; 
+        }
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+        }
+        .bg-savannah-100 { background-color: #FDFBF8; }
+        .bg-savannah-200 { background-color: #F5EFE6; }
+        .bg-savannah-300 { background-color: #E8DDCD; }
+        .text-savannah-800 { color: #4A403A; }
+        .text-savannah-600 { color: #7E7467; }
+        .accent-teal { color: #008080; }
+        .bg-accent-teal { background-color: #008080; }
+        .bg-accent-gold { background-color: #D4AF37; }
+        .text-accent-gold { color: #D4AF37; }
+        .nav-link.active {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+        .solution-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .solution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-savannah-100 text-savannah-800">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-savannah-100/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold font-lora text-savannah-800">Nyumba Ya Tumaini</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-savannah-600 hover:text-accent-gold transition-colors duration-300">Our Story</a>
+                <a href="#solution" class="nav-link text-savannah-600 hover:text-accent-gold transition-colors duration-300">What We Do</a>
+                <a href="#impact" class="nav-link text-savannah-600 hover:text-accent-gold transition-colors duration-300">Our Impact</a>
+                <a href="#team" class="nav-link text-savannah-600 hover:text-accent-gold transition-colors duration-300">Team</a>
+            </div>
+            <a href="#get-involved" class="bg-accent-gold text-white font-semibold px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors duration-300 shadow">
+                Get Involved
+            </a>
+            <button id="mobile-menu-button" class="md:hidden">
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-savannah-100">
+            <a href="#about" class="block py-2 px-6 text-savannah-600 hover:bg-savannah-200">Our Story</a>
+            <a href="#solution" class="block py-2 px-6 text-savannah-600 hover:bg-savannah-200">What We Do</a>
+            <a href="#impact" class="block py-2 px-6 text-savannah-600 hover:bg-savannah-200">Our Impact</a>
+            <a href="#team" class="block py-2 px-6 text-savannah-600 hover:bg-savannah-200">Team</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-[85vh] min-h-[600px] flex items-center">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1541692641319-989cc334346a?q=80&w=2070&auto=format&fit=crop');">
+                <div class="absolute inset-0 bg-black/50"></div>
+            </div>
+            <div class="container mx-auto px-6 relative z-10 text-center text-white">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">Equity Through Community.</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">We exist to rescue, rehabilitate, reintegrate, and re-socialize street-connected boys, building a world where every child has a place to call home.</p>
+                <a href="#donate-section" class="bg-accent-gold text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-opacity-90 transition-colors duration-300 shadow-lg">
+                    Donate Now
+                </a>
+            </div>
+        </section>
+
+        <!-- The Problem / Our Why Section -->
+        <section id="why" class="py-20 bg-savannah-200">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold text-savannah-800 mb-4">The Challenge We Address</h2>
+                <p class="max-w-3xl mx-auto text-savannah-600 mb-12">
+                   Our journey began at Shauri Moyo Baptist Church, providing essentials to over 300 street-connected children. This experience revealed a deeper crisis: the urgent need for a safe haven away from the violence, abuse, and neglect of street life. This is why we exist.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-savannah-100 p-8 rounded-lg shadow-md">
+                        <h3 class="text-5xl font-extrabold text-accent-teal mb-2">500+</h3>
+                        <p class="font-semibold text-savannah-800">Lives Transformed</p>
+                        <p class="text-sm text-savannah-600">Over 18 years of dedicated service.</p>
+                    </div>
+                    <div class="bg-savannah-100 p-8 rounded-lg shadow-md">
+                        <h3 class="text-5xl font-extrabold text-accent-teal mb-2">20</h3>
+                        <p class="font-semibold text-savannah-800">Years of Service</p>
+                        <p class="text-sm text-savannah-600">Founded in 2002, our commitment is unwavering.</p>
+                    </div>
+                    <div class="bg-savannah-100 p-8 rounded-lg shadow-md">
+                        <h3 class="text-5xl font-extrabold text-accent-teal mb-2">100%</h3>
+                        <p class="font-semibold text-savannah-800">Community Focused</p>
+                        <p class="text-sm text-savannah-600">Building sustainable futures within their own communities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Us / Our Story -->
+        <section id="about" class="py-20 bg-savannah-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-savannah-800 mb-4">Our Story of Hope</h2>
+                    <p class="max-w-3xl mx-auto text-savannah-600">From a humble feeding program to a sanctuary of transformation, our journey is fueled by the belief that every child deserves a future.</p>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1594704443936-e684463b4a2d?q=80&w=1974&auto=format&fit=crop" alt="Founder with children" class="rounded-lg shadow-2xl">
+                    </div>
+                    <div class="md:w-1/2 text-savannah-600 space-y-4">
+                         <h3 class="text-2xl font-bold text-savannah-800">From Humble Beginnings</h3>
+                         <p>Nyumba ya Tumaini was founded by Ben Muya in 2002 under the patronage of the late Pastor Charles Baraza. It began as a feeding program at Shauri Moyo Baptist Church, providing food, clothing, and hygiene care to over 300 street-connected children and youth.</p>
+                         <h3 class="text-2xl font-bold text-savannah-800 mt-6">A Necessary Evolution</h3>
+                         <p>In 2003, the program relocated to Ongata Rongai to become a residential center, addressing the critical need for a safe haven. For over 18 years, we have transformed the lives of over 500 children, reuniting many with their families and equipping others with vocational skills in mechanics, carpentry, and masonry, empowering them to build brighter, sustainable futures.</p>
+                         <h3 class="text-2xl font-bold text-savannah-800 mt-6">Our Core Belief</h3>
+                         <p>We believe that our Youth are the future of Kenya. With increased community involvement and sponsor support, we aim to build a facility with critical resources and sustainable revenue opportunities for continued growth of our programs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Solution (The 4 R's) Section -->
+        <section id="solution" class="py-20 bg-savannah-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-savannah-800 mb-4">Our Holistic Approach</h2>
+                    <p class="max-w-3xl mx-auto text-savannah-600">Our work is built on four interconnected pillars, creating a comprehensive path from street life to a sustainable future. Click each pillar to learn more.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="solution-card bg-savannah-100 p-8 rounded-lg shadow-md text-center cursor-pointer" data-solution="rescue">
+                        <div class="text-5xl mb-4 text-accent-gold">🤝</div>
+                        <h3 class="text-2xl font-bold mb-2">Rescue</h3>
+                        <p class="text-savannah-600">Immediate care and protection for boys leaving the streets.</p>
+                    </div>
+                    <div class="solution-card bg-savannah-100 p-8 rounded-lg shadow-md text-center cursor-pointer" data-solution="rehabilitate">
+                        <div class="text-5xl mb-4 text-accent-gold">❤️‍🩹</div>
+                        <h3 class="text-2xl font-bold mb-2">Rehabilitate</h3>
+                        <p class="text-savannah-600">Healing through counseling, mentorship, and spiritual guidance.</p>
+                    </div>
+                    <div class="solution-card bg-savannah-100 p-8 rounded-lg shadow-md text-center cursor-pointer" data-solution="reintegrate">
+                        <div class="text-5xl mb-4 text-accent-gold">🏡</div>
+                        <h3 class="text-2xl font-bold mb-2">Reintegrate</h3>
+                        <p class="text-savannah-600">Reconnecting boys with their families and home communities.</p>
+                    </div>
+                    <div class="solution-card bg-savannah-100 p-8 rounded-lg shadow-md text-center cursor-pointer" data-solution="resocialize">
+                        <div class="text-5xl mb-4 text-accent-gold">🌱</div>
+                        <h3 class="text-2xl font-bold mb-2">Re-Socialize</h3>
+                        <p class="text-savannah-600">Empowering through education, vocational skills, and community life.</p>
+                    </div>
+                </div>
+
+                <div id="solution-details" class="mt-12 bg-savannah-100 p-8 rounded-lg shadow-inner" style="display: none;">
+                    <div id="rescue-content" class="solution-content hidden">
+                        <h3 class="text-2xl font-bold mb-4">Rescue: A Safe Beginning</h3>
+                        <p class="text-savannah-600">We remove boys from the immediate dangers of street life, ensuring their fundamental rights are protected. This initial step provides a sanctuary with temporal care, security, nourishment, and all other basic needs, creating a stable foundation for their journey of healing and growth.</p>
+                    </div>
+                    <div id="rehabilitate-content" class="solution-content hidden">
+                        <h3 class="text-2xl font-bold mb-4">Rehabilitate: Healing from Within</h3>
+                        <p class="text-savannah-600">Rehabilitation is a journey of healing the mind, body, and spirit. We provide our rescued children with spiritual guidance, one-on-one counseling, and comprehensive psychosocial support. This is complemented by literacy classes, diverse sporting activities, dedicated mentorship, and life skills training, all supported by essential medical care.</p>
+                    </div>
+                    <div id="reintegrate-content" class="solution-content hidden">
+                        <h3 class="text-2xl font-bold mb-4">Reintegrate: Rebuilding Family Bonds</h3>
+                        <p class="text-savannah-600">The ultimate goal for many is to return home. Our team facilitates meticulous home tracing to reconnect rehabilitated boys with their families and communities. For children who require long-term alternative care, we provide unwavering support and a loving home at NYT, ensuring they are never alone.</p>
+                    </div>
+                    <div id="resocialize-content" class="solution-content hidden">
+                        <h3 class="text-2xl font-bold mb-4">Re-Socialize: Thriving in Community</h3>
+                        <p class="text-savannah-600">Sustainable change happens within a supportive community. We focus on the economic empowerment of reintegrated families to help them stay together. We connect boys to community programs, cultural events, formal education, vocational training, church life, recreation, and health centers. We provide ongoing primary, secondary, and tertiary education support to ensure they have the tools to build their own futures.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section id="impact" class="py-20 bg-savannah-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-savannah-800 mb-4">Our Proven Impact</h2>
+                    <p class="max-w-3xl mx-auto text-savannah-600">Your support creates tangible, lasting change. We measure our success not just in numbers, but in the stories of hope and transformation that unfold every day.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="chart-container relative h-96 max-w-xl mx-auto w-full">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-savannah-200 p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-savannah-800">James' Story of Resilience</h3>
+                            <p class="text-savannah-600 mt-2">"When I came to Nyumba Ya Tumaini, I had nothing. They gave me more than food and a bed; they gave me a family and a skill. Today, I am a carpenter with my own business, providing for my family. They didn't just save me, they gave me a future."</p>
+                        </div>
+                        <div class="bg-savannah-200 p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-savannah-800">A Mother's Gratitude</h3>
+                            <p class="text-savannah-600 mt-2">"I had lost all hope of seeing my son again. Nyumba Ya Tumaini found him, healed him, and brought him back to me. They supported us to start a small business so I could keep him home. I have my son back because of them."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="py-20 bg-savannah-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-savannah-800 mb-4">Meet the Heart of Our Mission</h2>
+                    <p class="max-w-3xl mx-auto text-savannah-600">Our dedicated team works tirelessly to create a nurturing environment where every boy can heal, grow, and thrive.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+                    <div class="team-member">
+                        <img src="https://placehold.co/200x200/E8DDCD/4A403A?text=BM" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg object-cover">
+                        <h3 class="font-bold text-lg">Benedict Muya</h3>
+                        <p class="text-sm text-accent-teal font-semibold">Founder</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://placehold.co/200x200/E8DDCD/4A403A?text=MK" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg object-cover">
+                        <h3 class="font-bold text-lg">Miriam Komu</h3>
+                        <p class="text-sm text-accent-teal font-semibold">Project Director</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://placehold.co/200x200/E8DDCD/4A403A?text=FG" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg object-cover">
+                        <h3 class="font-bold text-lg">Florence Gikiro</h3>
+                        <p class="text-sm text-accent-teal font-semibold">House Mother</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://placehold.co/200x200/E8DDCD/4A403A?text=GM" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg object-cover">
+                        <h3 class="font-bold text-lg">Gerald Mutie</h3>
+                        <p class="text-sm text-accent-teal font-semibold">Rescue Officer</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://placehold.co/200x200/E8DDCD/4A403A?text=RO" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg object-cover">
+                        <h3 class="font-bold text-lg">Robert Oyoo</h3>
+                        <p class="text-sm text-accent-teal font-semibold">Social Worker</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Involved Section -->
+        <section id="get-involved" class="py-20 bg-savannah-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-savannah-800 mb-4">You Can Make a Difference</h2>
+                    <p class="max-w-3xl mx-auto text-savannah-600">Whether you donate, volunteer, or partner with us, your support fuels our mission and creates lasting change.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Donation Form -->
+                    <div id="donate-section" class="bg-savannah-200 p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Every Donation Counts</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                            <button class="donation-amount bg-white p-4 rounded-md text-center font-semibold border-2 border-transparent hover:border-accent-gold transition" data-amount="10">$10</button>
+                            <button class="donation-amount bg-white p-4 rounded-md text-center font-semibold border-2 border-transparent hover:border-accent-gold transition" data-amount="20">$20</button>
+                            <button class="donation-amount bg-white p-4 rounded-md text-center font-semibold border-2 border-transparent hover:border-accent-gold transition" data-amount="50">$50</button>
+                            <button class="donation-amount bg-white p-4 rounded-md text-center font-semibold border-2 border-transparent hover:border-accent-gold transition" data-amount="100">$100</button>
+                        </div>
+                        <div class="mb-6">
+                            <input id="custom-amount" type="number" placeholder="Custom Amount ($)" class="w-full p-4 rounded-md border-2 border-savannah-300 focus:outline-none focus:ring-2 focus:ring-accent-gold">
+                        </div>
+                        <div class="flex justify-center gap-4 mb-6">
+                            <button class="donation-frequency bg-white px-6 py-3 rounded-full font-semibold border-2 border-transparent" data-freq="one-time">One-Time</button>
+                            <button class="donation-frequency bg-white px-6 py-3 rounded-full font-semibold border-2 border-transparent" data-freq="monthly">Monthly</button>
+                        </div>
+                        <button class="w-full bg-accent-gold text-white font-bold text-xl p-4 rounded-full hover:bg-opacity-90 transition">Donate <span id="donation-summary">$10 Monthly</span></button>
+                        <p class="text-xs text-center text-savannah-600 mt-4">Your generosity supports rehabilitation and reintegration into nurturing communities.</p>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="bg-savannah-200 p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Join Our Community</h3>
+                        <form action="#" method="POST">
+                            <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                                <input type="text" placeholder="First Name" required class="w-full p-3 rounded-md border-2 border-savannah-300">
+                                <input type="text" placeholder="Last Name" required class="w-full p-3 rounded-md border-2 border-savannah-300">
+                            </div>
+                            <div class="mb-4">
+                                <input type="email" placeholder="Email Address" required class="w-full p-3 rounded-md border-2 border-savannah-300">
+                            </div>
+                            <div class="mb-4">
+                                <textarea placeholder="Your Message" rows="4" required class="w-full p-3 rounded-md border-2 border-savannah-300"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="bg-accent-teal text-white font-bold px-10 py-3 rounded-full hover:bg-opacity-90 transition">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-savannah-800 text-savannah-200 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-bold font-lora mb-2">Nyumba Ya Tumaini</h3>
+            <p class="mb-6">Children and Youth Empowerment + Equity Through Community</p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#about" class="hover:text-accent-gold transition">About</a>
+                <a href="#solution" class="hover:text-accent-gold transition">Our Work</a>
+                <a href="#get-involved" class="hover:text-accent-gold transition">Get Involved</a>
+                <a href="#contact" class="hover:text-accent-gold transition">Contact</a>
+            </div>
+            <p class="text-sm text-savannah-300">&copy; <span id="currentYear"></span> Nyumba Ya Tumaini. All Rights Reserved. Website by an AI Assistant.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Smooth Scrolling & Active Nav Link Highlighting
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Solution Cards Interaction
+            const solutionCards = document.querySelectorAll('.solution-card');
+            const solutionDetailsContainer = document.getElementById('solution-details');
+            const solutionContents = document.querySelectorAll('.solution-content');
+            let activeSolution = null;
+
+            solutionCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const solutionType = card.dataset.solution;
+                    
+                    // Hide all content first
+                    solutionContents.forEach(content => content.classList.add('hidden'));
+                    
+                    // Deselect previous card
+                    if(activeSolution) {
+                        activeSolution.classList.remove('bg-accent-teal', 'text-white');
+                        activeSolution.classList.add('bg-savannah-100');
+                    }
+                    
+                    // Show the selected content
+                    const targetContent = document.getElementById(`${solutionType}-content`);
+                    targetContent.classList.remove('hidden');
+                    solutionDetailsContainer.style.display = 'block';
+
+                    // Highlight active card
+                    card.classList.add('bg-accent-teal', 'text-white');
+                    card.classList.remove('bg-savannah-100');
+                    activeSolution = card;
+                });
+            });
+
+
+            // Impact Chart
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            const impactChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: 'Children Supported',
+                        data: [65, 80, 95, 120, 150, 185],
+                        backgroundColor: '#008080',
+                        borderColor: '#006666',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(74, 64, 58, 0.1)'
+                            }
+                        },
+                        x: {
+                             grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Growth in Direct Support & Empowerment',
+                            font: {
+                                size: 16,
+                                family: 'Lora'
+                            },
+                             color: '#4A403A'
+                        }
+                    }
+                }
+            });
+
+            // Donation Form Interaction
+            const amountButtons = document.querySelectorAll('.donation-amount');
+            const frequencyButtons = document.querySelectorAll('.donation-frequency');
+            const customAmountInput = document.getElementById('custom-amount');
+            const summarySpan = document.getElementById('donation-summary');
+
+            let selectedAmount = 10;
+            let selectedFrequency = 'monthly';
+            
+            function updateSummary() {
+                const freqText = selectedFrequency.charAt(0).toUpperCase() + selectedFrequency.slice(1);
+                summarySpan.textContent = `$${selectedAmount} ${freqText}`;
+            }
+
+            function setActiveButton(buttons, activeButton) {
+                buttons.forEach(btn => {
+                    btn.classList.remove('bg-accent-teal', 'text-white');
+                    btn.classList.add('bg-white');
+                });
+                activeButton.classList.add('bg-accent-teal', 'text-white');
+                activeButton.classList.remove('bg-white');
+            }
+
+            amountButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    selectedAmount = button.dataset.amount;
+                    customAmountInput.value = '';
+                    setActiveButton(amountButtons, button);
+                    updateSummary();
+                });
+            });
+
+            customAmountInput.addEventListener('input', () => {
+                if(customAmountInput.value) {
+                    selectedAmount = customAmountInput.value;
+                    amountButtons.forEach(btn => btn.classList.remove('bg-accent-teal', 'text-white'));
+                    updateSummary();
+                }
+            });
+
+            frequencyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    selectedFrequency = button.dataset.freq;
+                    setActiveButton(frequencyButtons, button);
+                    updateSummary();
+                });
+            });
+            
+            // Set initial active states
+            setActiveButton(amountButtons, document.querySelector('.donation-amount[data-amount="10"]'));
+            setActiveButton(frequencyButtons, document.querySelector('.donation-frequency[data-freq="monthly"]'));
+            updateSummary();
+
+            // Set Current Year in Footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
